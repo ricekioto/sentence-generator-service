@@ -14,31 +14,16 @@ public class RequestService {
         this.restTemplate = restTemplate;
     }
 
-    public String getHtml(String url) throws RequestServiceException {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
-        if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseEntity.getBody();
-        } else {
-            throw new RequestServiceException("Не удалось получить HTML. Код состояния: " + responseEntity.getStatusCode());
+    public SentenceResponse getSentenceResponse(String url) {
+        try {
+            SentenceResponse[] responseEntity = restTemplate.getForObject(url, SentenceResponse[].class);
+            if (responseEntity.length != 0) {
+                return responseEntity[0];
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            throw new RequestServiceException("Ошибка во время запроса: ", e);
         }
-    }
-
-    public String get(String url) throws RequestServiceException {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
-        if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseEntity.getBody();
-        } else {
-            throw new RequestServiceException("Не удалось получить HTML. Код состояния: " + responseEntity.getStatusCode());
-        }
-    }
-
-    public SentenceResponse getSentenceResponse(String url) throws RequestServiceException {
-        SentenceResponse[] responseEntity = restTemplate.getForObject(url, SentenceResponse[].class);
-        if (responseEntity.length != 0) {
-            return responseEntity[0];
-        } else {
-            return null;
-        }
-
     }
 }
