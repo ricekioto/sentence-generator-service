@@ -1,8 +1,11 @@
 package com.example.project_telegram_bot.controller;
 
+import com.example.project_telegram_bot.error.EnglishRandomServiceException;
+import com.example.project_telegram_bot.error.RequestServiceException;
 import com.example.project_telegram_bot.service.EnglishRandomService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +21,12 @@ public class RandomSentenceController {
     }
 
     @GetMapping("/sentence")
-    public ResponseEntity<String> getRandomSentenceEndpoint() {
-        String sentence = englishRandomService.getSentence();
-        if (sentence != null) {
-            return ResponseEntity.ok(sentence);
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Не удалось получить случайное предложение.");
-        }
+    public String getRandomSentenceEndpoint() throws EnglishRandomServiceException {
+        return englishRandomService.getSentence();
+    }
+
+    @ExceptionHandler(EnglishRandomServiceException.class)
+    public ResponseEntity<String> handleRequestServiceException(EnglishRandomServiceException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
