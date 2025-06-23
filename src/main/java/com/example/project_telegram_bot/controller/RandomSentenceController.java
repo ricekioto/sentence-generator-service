@@ -1,7 +1,6 @@
 package com.example.project_telegram_bot.controller;
 
 import com.example.project_telegram_bot.error.EnglishRandomServiceException;
-import com.example.project_telegram_bot.error.RequestServiceException;
 import com.example.project_telegram_bot.service.EnglishRandomService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
