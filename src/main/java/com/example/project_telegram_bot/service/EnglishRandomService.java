@@ -1,8 +1,6 @@
 package com.example.project_telegram_bot.service;
 
 import com.example.project_telegram_bot.entity.SentenceResponse;
-import com.example.project_telegram_bot.error.RandomSentenceNotFoundException;
-import com.example.project_telegram_bot.error.RandomSentenceServiceException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
