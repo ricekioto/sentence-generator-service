@@ -2,16 +2,14 @@ package com.example.project_telegram_bot.service;
 
 import com.example.project_telegram_bot.entity.SentenceResponse;
 import com.example.project_telegram_bot.error.RequestServiceException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@RequiredArgsConstructor
 public class RequestService {
     private final RestTemplate restTemplate;
-
-    public RequestService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
 
     public SentenceResponse getSentenceResponse(String url) {
         try {
