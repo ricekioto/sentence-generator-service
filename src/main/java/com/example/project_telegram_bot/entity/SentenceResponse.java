@@ -8,8 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SentenceResponse {
-
     @JsonProperty("content")
     private String content;
-
 }
