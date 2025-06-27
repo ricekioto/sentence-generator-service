@@ -19,4 +19,5 @@ public class BuildingUrlService {
                 .toUriString();
         return url;
     }
+
 }
