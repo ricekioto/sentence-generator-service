@@ -26,4 +26,5 @@ public class RandomSentenceController {
     public ResponseEntity<String> handleRequestServiceException(EnglishRandomServiceException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }
