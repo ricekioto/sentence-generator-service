@@ -9,3 +9,4 @@ public class RandomSentenceServiceException extends RuntimeException {
         super(message, cause);
     }
 }
+
