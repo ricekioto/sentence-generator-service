@@ -9,3 +9,4 @@ public class RandomSentenceNotFoundException extends RuntimeException {
         super(message, cause);
     }
 }
+
