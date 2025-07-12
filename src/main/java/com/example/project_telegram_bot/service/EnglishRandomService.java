@@ -19,5 +19,4 @@ public class EnglishRandomService {
         String sentence = response.getContent();
         return sentence;
     }
-
 }
