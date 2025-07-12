@@ -10,4 +10,5 @@ import lombok.Setter;
 public class SentenceResponse {
     @JsonProperty("content")
     private String content;
+
 }
